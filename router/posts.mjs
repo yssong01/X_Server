@@ -1,10 +1,10 @@
 import express from "express";
 import * as postController from "../controller/post.mjs";
-import { validate } from "../middleware/validator.mjs";
+import { body } from "express-validator";
 
 //설치-> C:\yssong\X\Server>npm i express-validator
 //참고 https://express-validator.github.io/docs
-import { body } from "express-validator";
+import { validate } from "../middleware/validator.mjs";
 
 const router = express.Router();
 

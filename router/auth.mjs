@@ -10,7 +10,7 @@ const validateLogin = [
   body("userid")
     .trim()
     .isLength({ min: 4 })
-    .withMessage("최소 4자 이상 입력")
+    .withMessage("최소 4자이상 입력")
     .matches(/^[a-zA-Z0-9]+$/)
     .withMessage("특수문자 사용불가"),
   body("password").trim().isLength({ min: 4 }).withMessage("최소 4자이상 입력"),
