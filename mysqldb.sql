@@ -17,3 +17,4 @@ create table posts (
     foreign key(useridx) references users(idx)
 );
 
+select * from users
