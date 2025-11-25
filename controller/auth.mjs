@@ -10,8 +10,9 @@ async function createJwtToken(id) {
   });
 }
 
+// 회원가입
 export async function signup(req, res, next) {
-  const { userid, password, name, email } = req.body;
+  const { userid, password, name, email, url } = req.body;
 
   // 회원 중복 체크
   const found = await authRepository.findByUserid(userid);
@@ -20,7 +21,13 @@ export async function signup(req, res, next) {
   }
 
   const hashed = bcrypt.hashSync(password, config.bcrypt.saltRounds);
-  const user = await authRepository.createUser(userid, hashed, name, email);
+  const user = await authRepository.createUser({
+    userid,
+    password: hashed,
+    name,
+    email,
+    url,
+  });
   //   const user = await authRepository.createUser(userid, password, name, email);
   const token = await createJwtToken(user.id);
   console.log(token);
@@ -43,10 +50,9 @@ export async function login(req, res, next) {
 }
 
 export async function me(req, res, next) {
-  //   const user = await authRepository.findByUserid(req.id);
-  //   if (!user) {
-  //     return res.status(404).json({ message: "일치하는 사용자가 없음" });
-  //   }
-  //   res.status(200).json({ token: req.token, userid: user.userid });
-  res.status(200).json({ message: "성공했어 ~" });
+  const user = await authRepository.findById(req.id);
+  if (!user) {
+    return res.status(404).json({ message: "일치하는 사용자가 없음" });
+  }
+  res.status(200).json({ token: req.token, userid: user.userid });
 }
