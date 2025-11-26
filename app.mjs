@@ -23,6 +23,9 @@ connectDB()
   })
   .catch(console.error);
 
+
+
+  
 // // 나는 앞으로 8000번으로 할 것. 8080은 충돌 나고 있음. 오라클이 이미 설치되어있어서?
 // app.listen(config.host.port, () => {
 //   console.log("서버 실행중!");
