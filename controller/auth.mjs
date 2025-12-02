@@ -30,8 +30,8 @@ export async function signup(req, res, next) {
   });
   //   const user = await authRepository.createUser(userid, password, name, email);
   const token = await createJwtToken(user.id);
-  console.log(token);
-  res.status(201).json({ token, user });
+  // console.log(token);
+  res.status(201).json({ token, userid });
 }
 
 export async function login(req, res, next) {
@@ -46,7 +46,7 @@ export async function login(req, res, next) {
   }
 
   const token = await createJwtToken(user.id);
-  res.status(200).json({ token, user });
+  res.status(200).json({ token, userid });
 }
 
 export async function me(req, res, next) {
