@@ -1,5 +1,5 @@
 import express from "express";
-import * as postController from "../controller/post.mjs";
+import * as postController from "../controller/post_controller.mjs";
 import { body } from "express-validator";
 
 //설치-> C:\yssong\X\Server>npm i express-validator

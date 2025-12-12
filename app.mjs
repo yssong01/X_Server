@@ -1,7 +1,7 @@
 //이전 것 전체 설치-> C:\yssong\X\Server>npm i
 
 import express from "express";
-import postsRouter from "./router/posts.mjs";
+import postsRouter from "./router/posts_router.mjs";
 import authRouter from "./router/auth.mjs";
 import { config } from "./config.mjs";
 import { connectDB } from "./db/database.mjs";
@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/post", postsRouter);
+
 app.use("/auth", authRouter);
 
 app.use((req, res, next) => {

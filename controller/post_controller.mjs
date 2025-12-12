@@ -1,4 +1,4 @@
-import * as postRepository from "../data/post.mjs";
+import * as postRepository from "../data/post_data.mjs";
 
 // 모든 포스트를 가져오는 함수
 export async function getPosts(req, res, next) {
